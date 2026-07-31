@@ -62,6 +62,7 @@ linting = [
 ]
 test = [
     "pytest",
+    "pytest-cov",
     "anyio",
 ]
 
