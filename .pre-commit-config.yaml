@@ -2,12 +2,12 @@ default_language_version:
   python: "3.13"
 repos:
   - repo: https://github.com/compilerla/conventional-pre-commit
-    rev: v4.0.0
+    rev: v4.4.0
     hooks:
       - id: conventional-pre-commit
         stages: [commit-msg]
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: check-ast
       - id: check-case-conflict
@@ -18,20 +18,18 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.11.0
+    rev: v0.16.1
     hooks:
       - id: ruff
         args: ["--fix", "--config", "pyproject.toml"]
       - id: ruff-format
         args: ["--config", "pyproject.toml"]
-  - repo: https://github.com/codespell-project/codespell
-    rev: v2.4.1
+  - repo: https://github.com/crate-ci/typos
+    rev: "v1"
     hooks:
-      - id: codespell
-        additional_dependencies:
-          - tomli
+      - id: typos
   - repo: https://github.com/python-formate/flake8-dunder-all
-    rev: v0.4.1
+    rev: v0.6.0
     hooks:
       - id: ensure-dunder-all
         exclude: "tools"
@@ -42,7 +40,7 @@ repos:
   #     - id: slotscheck
   #       exclude: "docs|.github"
   - repo: https://github.com/sphinx-contrib/sphinx-lint
-    rev: "v1.0.0"
+    rev: "v1.0.2"
     hooks:
       - id: sphinx-lint
   # - repo: local
@@ -52,3 +50,23 @@ repos:
   #       language: python
   #       entry: python tools/pypi_readme.py
   #       types: [markdown]
+  - repo: local
+    hooks:
+      - id: ty
+        name: ty
+        entry: mise run type-check:ty
+        language: system
+        types: [python]
+        pass_filenames: false
+      - id: mypy
+        name: mypy
+        entry: mise run type-check:mypy
+        language: system
+        types: [python]
+        pass_filenames: false
+      - id: pyright
+        name: basedpyright
+        entry: mise run type-check:pyright
+        language: system
+        types: [python]
+        pass_filenames: false
