@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 import pytest
 
-from mersal_msgspec import MsgspecSerializer
+from mersal.msgspec import MsgspecSerializer
 
 __all__ = (
     "Message1",

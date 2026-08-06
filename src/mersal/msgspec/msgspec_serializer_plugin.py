@@ -3,11 +3,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
+from mersal.msgspec.msgspec_serializer import MsgspecSerializer
 from mersal.plugins import Plugin
 from mersal.serialization import (
     Serializer,
 )
-from mersal_msgspec.msgspec_serializer import MsgspecSerializer
 
 if TYPE_CHECKING:
     from mersal.configuration import StandardConfigurator
